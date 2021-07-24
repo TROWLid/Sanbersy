@@ -1,0 +1,58 @@
+CMD 
+G:\>cd Database\mysql\bin
+G:\Database\mysql\bin>mysql -uroot
+
+
+1. Membuat database
+create database myshop;
+
+2. Membuat Table dalam database
+ create table categories(
+    -> id int(8) auto_increment,
+    -> name varchar(255),
+    -> primary key(id));
+ 
+ create table items(
+    -> id int(8) auto_increment,
+    -> name varchar(255),
+    -> description varchar(255),
+    -> price int(15),
+    -> stock int(15),
+    -> category_id int(8),
+    -> primary key(id),
+    -> foreign key(category_id) references categories(id));
+
+ create table users(
+    -> id int(8) auto_increment,
+    -> name varchar(255),
+    -> email varchar(255),
+    -> password varchar(255),
+    -> primary key(id));
+
+3. Memasukkan data pada tabel
+ insert into users(name, email, password) values
+    -> ("John Doe", "john@doe.com", "john123"),
+    -> ("Jane Doe", "jane@doe.com", "jenita123");
+
+  insert into categories(name) values
+    -> ("gadget"),
+    -> ("cloth"),
+    -> ("men"),
+    -> ("women"),
+    -> ("branded");
+
+  insert into items(name, description, price, stock, category_id) values
+    -> ("samsung b50", "hape keren dari merek sumsang",4000000,100,1),
+    -> ("Uniklooh","baju keren dari brand ternama",500000,50,2),
+    -> ("IMHO Watch","jam tangan anak yang jujur banget",2000000,10,1);
+
+4. Mengambil data dari database
+ a. select id, name, email from users;
+
+ b. select * from items where price > 1000000;
+
+
+ c. 
+
+5. Mengubah data
+ update items set price= 2500000 where id=1;
